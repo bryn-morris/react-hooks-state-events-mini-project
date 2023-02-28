@@ -1,7 +1,12 @@
 import React from "react";
 import Option from "./Option"
 
-function NewTaskForm() {
+function NewTaskForm({categories}) {
+
+  const trimmedCategories = categories.filter((eachObj) => eachObj !== "All")
+  trimmedCategories.unshift("")
+
+
   return (
     <form className="new-task-form">
       <label>
@@ -11,7 +16,9 @@ function NewTaskForm() {
       <label>
         Category
         <select name="category">
-          <Option />
+          {trimmedCategories.map((eachCategory)=>{
+            return <Option category = {eachCategory}/>
+          })}
         </select>
       </label>
       <input type="submit" value="Add task" />

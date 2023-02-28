@@ -1,9 +1,11 @@
 import React from "react";
 
-function Option () {
+function Option ({category}) {
+
+    
 
 
-    return <div></div>
+    return <option>{category}</option>
 
 }
 

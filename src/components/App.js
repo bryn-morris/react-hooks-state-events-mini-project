@@ -15,6 +15,7 @@ function App() {
 
   const [taskData, setTaskData] = useState(TASKS)
   const [selectedButton, setSelectedButton] = useState()
+  const [newTaskObj,setNewTaskObj] = useState({})
 
   function handleDelete (parentDiv) {
     const newArray = [...taskData].filter(eachObj => eachObj !== parentDiv)
@@ -48,6 +49,12 @@ function App() {
     }
   })
 
+  function handleNewTaskSubmission (newObj) {
+
+    setTaskData([...taskData, newObj])
+    setNewTaskObj({})
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
@@ -57,6 +64,8 @@ function App() {
       />
       <NewTaskForm
         categories = {CATEGORIES}
+        handleNewTaskSubmission = {handleNewTaskSubmission}
+        newTaskObj = {newTaskObj}
       />
       <TaskList 
         taskData = {filteredTasks} 

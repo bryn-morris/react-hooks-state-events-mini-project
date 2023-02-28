@@ -1,23 +1,38 @@
 import React from "react";
-import Option from "./Option"
 
-function NewTaskForm({categories}) {
+function NewTaskForm({categories, handleNewTaskSubmission, newTaskObj}) {
 
   const trimmedCategories = categories.filter((eachObj) => eachObj !== "All")
   trimmedCategories.unshift("")
 
+  function onNewTaskSubmit (e) {
+    e.preventDefault()
+  
+    handleNewTaskSubmission(
+      {
+        text: e.target.text.value,
+        category: e.target.category.value
+      })
+  } 
+
 
   return (
-    <form className="new-task-form">
+    <form className="new-task-form" onSubmit = {onNewTaskSubmit}>
       <label>
         Details
-        <input type="text" name="text" />
+        <input type="text" name="text" value = {newTaskObj.text}/>
       </label>
       <label>
         Category
         <select name="category">
           {trimmedCategories.map((eachCategory)=>{
-            return <Option category = {eachCategory}/>
+            return (
+              <option
+                key = {eachCategory}
+                value = {newTaskObj.category}
+              >{eachCategory}
+              </option>
+            )
           })}
         </select>
       </label>

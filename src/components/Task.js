@@ -1,11 +1,34 @@
 import React from "react";
 
-function Task() {
+function Task({taskObj, handleDelete}) {
+
+////////////////////////////////////////////////////////////////////////
+//////////////////// Deliverable #2 - Task
+////////////////////////////////////////////////////////////////////////
+
+
+  function onDeleteClick (eventObj) {
+    handleDelete(taskObj)
+  }
+
   return (
     <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
+      <div 
+        className="label"
+        value = {taskObj.category}
+      >{taskObj.category}
+      </div>
+      <div 
+        className="text" 
+        value={taskObj.text}
+      >{taskObj.text}
+      </div>
+      <button 
+        className="delete" 
+        value = {taskObj}
+        onClick = {onDeleteClick}
+      >X
+      </button>
     </div>
   );
 }

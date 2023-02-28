@@ -1,10 +1,19 @@
 import React from "react";
+import Button from "./Button"
 
-function CategoryFilter() {
+function CategoryFilter({categories, changeSelectedButton}) {
+
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
+      {categories.map(
+    (eachCategory) => {return (
+    <Button 
+      key = {eachCategory} 
+      category = {eachCategory}
+      changeSelectedButton = {changeSelectedButton}
+    />
+    )})}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Option from "./Option"
 
 function NewTaskForm() {
   return (
@@ -10,7 +11,7 @@ function NewTaskForm() {
       <label>
         Category
         <select name="category">
-          {/* render <option> elements for each category here */}
+          <Option />
         </select>
       </label>
       <input type="submit" value="Add task" />
